@@ -8,17 +8,17 @@ wget https://raw.githubusercontent.com/WorldCleaner/guacamole-install/master/ins
 
 Das Script ausführbar machen
 ~~~
-chmod +x guac-install.sh
+chmod +x install.sh
 ~~~
 Convertieren
 
 ~~~
 sudo apt-get update  
 sudo apt-get install dos2unix  
-dos2unix guac-install.sh  
+dos2unix install.sh  
 ~~~
 
 ausführen (als root):
 ~~~
-./guac-install.sh
+./install.sh
 ~~~

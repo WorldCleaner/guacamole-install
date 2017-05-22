@@ -41,9 +41,11 @@ ln -s /usr/local/lib/freerdp/* /usr/lib/x86_64-linux-gnu/freerdp/.
 service tomcat8 restart
 
 # Configs guacamole.properties anpassen
-echo "[server]" >> /etc/guacamole/guacd.conf
-echo "bind_host = localhost" >> /etc/guacamole/guacd.conf
-echo "bind_port = 4822" >> /etc/guacamole/guacd.conf
+echo "[server]" >> /etc/guacamole/guacamole.properties
+echo "bind_host = localhost" >> /etc/guacamole/guacamole.properties
+echo "bind_port = 4822" >> /etc/guacamole/guacamole.properties
+
+#guacd.conf
 
 # guacd enable & start
 systemctl enable guacd

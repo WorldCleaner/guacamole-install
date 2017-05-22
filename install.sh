@@ -29,6 +29,11 @@ cd ..
 
 # Guacamole deployen
 mv guacamole-${VERSION}-incubating.war /etc/guacamole/guacamole.war
+ln -s /etc/guacamole/guacamole.war /var/lib/tomcat8/webapps/
+ln -s /usr/local/lib/freerdp/* /usr/lib/x86_64-linux-gnu/freerdp/.
+
+# restart tomcat
+service tomcat8 restart
 
 # Configs guacamole.properties anpassen
 echo "[server]" >> /etc/guacamole/guacd.conf

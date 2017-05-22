@@ -46,3 +46,28 @@ systemctl start guacd
 
 # Cleanup
 rm -rf guacamole-*
+
+
+
+
+# Test automatische konfiguration Apache & Reverse Proxy
+
+# sudo apt-get install apache2 openssl -y
+# sudo a2enmod ssl
+# sudo a2enmod proxy
+# sudo a2enmod proxy_wstunnel
+# sudo a2enmod proxy_http
+# weitere mods
+
+# sudo rm /etc/apache2/sites-enabled/000-default.conf
+# sudo touch /etc/apache2/sites-enabled/000-default.conf
+# echo "<VirutalHost *:80>" >> /etc/apache2/sites-enabled/000-default.conf
+# echo "ServerName mydomain.de" >> /etc/apache2/sites-enabled/000-default.conf
+# echo "Redirect permanent / https://mydomain.de/" >> /etc/apache2/sites-enabled/000-default.conf
+# echo "</VirtualHost>" >> /etc/apache2/sites-enabled/000-default.conf
+
+# echo "<VirutalHost *:443>" >> /etc/apache2/sites-enabled/000-default.conf
+# echo "</VirutalHost>" >> /etc/apache2/sites-enabled/000-default.conf
+
+# mkdir /etc/apache2/ssl
+# openssl req -new -days 1095 -newkey rsa:4096bits -sha512 -x509 -nodes -out /etc/apache2/server.crt -keyout /etc/apache2/server.key

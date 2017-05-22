@@ -10,6 +10,11 @@ libvorbis-dev libwebp-dev jq tomcat8 freerdp
 
 SERVER=$(curl -s 'https://www.apache.org/dyn/closer.cgi?as_json=1' | jq --raw-output '.preferred|rtrimstr("/")')
 
+# Serverconfig
+echo "" >> /etc/default/tomcat8
+echo "# GUACAMOLE EVN VARIABLE" >> /etc/default/tomcat8
+echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat8
+
 # Download der Dateien
 wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/source/guacamole-server-${VERSION}-incubating.tar.gz
 

@@ -23,6 +23,8 @@ tar -xzf guacamole-server-${VERSION}-incubating.tar.gz
 
 # Ordner erstellen
 mkdir /etc/guacamole
+mkdir /etc/guacamole/lib
+mkdir /etc/guacamole/extensions
 
 # GUACD installieren
 cd guacamole-server-${VERSION}-incubating
@@ -37,15 +39,17 @@ mv guacamole-${VERSION}-incubating.war /etc/guacamole/guacamole.war
 ln -s /etc/guacamole/guacamole.war /var/lib/tomcat8/webapps/
 ln -s /usr/local/lib/freerdp/* /usr/lib/x86_64-linux-gnu/freerdp/.
 
-# restart tomcat
-service tomcat8 restart
-
 # Configs guacamole.properties anpassen
 echo "[server]" >> /etc/guacamole/guacamole.properties
 echo "bind_host = localhost" >> /etc/guacamole/guacamole.properties
 echo "bind_port = 4822" >> /etc/guacamole/guacamole.properties
+rm -rf /usr/share/tomcat8/.guacamole
+ln -s /etc/guacamole /usr/share/tomcat8/.guacamole
 
 #guacd.conf
+
+# restart tomcat
+service tomcat8 restart
 
 # guacd enable & start
 systemctl enable guacd
@@ -53,8 +57,6 @@ systemctl start guacd
 
 # Cleanup
 rm -rf guacamole-*
-
-
 
 
 # Test automatische konfiguration Apache & Reverse Proxy

@@ -33,6 +33,7 @@ make
 make install
 ldconfig
 cd ..
+PFAD='pwd'
 
 # Guacamole deployen
 mv guacamole-${VERSION}-incubating.war /etc/guacamole/guacamole.war
@@ -48,6 +49,10 @@ ln -s /etc/guacamole /usr/share/tomcat8/.guacamole
 
 #guacd.conf
 
+# Benutzerauthentifizierung einrichten
+cd /etc/guacamole/
+wget https://raw.githubusercontent.com/WorldCleaner/guacamole-install/master/user-mapping.xml
+
 # restart tomcat
 service tomcat8 restart
 
@@ -56,6 +61,7 @@ systemctl enable guacd
 systemctl start guacd
 
 # Cleanup
+cd ${PFAD}
 rm -rf guacamole-*
 
 

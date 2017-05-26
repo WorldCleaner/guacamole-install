@@ -17,11 +17,11 @@ echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat8
 
 # Download der Dateien
 wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/source/guacamole-server-${VERSION}-incubating.tar.gz
-# wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/binary/guacamole-${VERSION}-incubating.war
+wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/binary/guacamole-${VERSION}-incubating.war
 
 # Entpacken
 tar -xzf guacamole-server-${VERSION}-incubating.tar.gz
-# tar -xzf guacamole-auth-jdbc-${VERSION}-incubating.tar.gz
+tar -xzf guacamole-auth-jdbc-${VERSION}-incubating.tar.gz
 
 # Ordner erstellen
 mkdir /etc/guacamole
@@ -35,7 +35,7 @@ make
 make install
 ldconfig
 cd ..
-# PFAD='pwd'
+PFAD=$(pwd)
 
 # Guacamole deployen
 mv guacamole-${VERSION}-incubating.war /etc/guacamole/guacamole.war
@@ -52,8 +52,8 @@ ln -s /etc/guacamole /usr/share/tomcat8/.guacamole
 #guacd.conf
 
 # Benutzerauthentifizierung einrichten
-#cd /etc/guacamole/
-#wget https://raw.githubusercontent.com/WorldCleaner/guacamole-install/master/user-mapping.xml
+cd /etc/guacamole/
+wget https://raw.githubusercontent.com/WorldCleaner/guacamole-install/master/user-mapping.xml
 
 # restart tomcat
 service tomcat8 restart
@@ -63,7 +63,7 @@ systemctl enable guacd
 systemctl start guacd
 
 # Cleanup
-cd ${PFAD}
+cd $PFAD
 rm -rf guacamole-*
 
 

@@ -10,7 +10,7 @@ Das Script ausführbar machen
 ~~~
 sudo chmod +x install.sh
 ~~~
-Convertieren
+(Optional) Konvertieren
 
 ~~~
 sudo apt-get update  

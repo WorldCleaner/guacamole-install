@@ -17,11 +17,11 @@ echo "GUACAMOLE_HOME=/etc/guacamole" >> /etc/default/tomcat8
 
 # Download der Dateien
 wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/source/guacamole-server-${VERSION}-incubating.tar.gz
-wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/binary/guacamole-${VERSION}-incubating.war
+# wget ${SERVER}/incubator/guacamole/${VERSION}-incubating/binary/guacamole-${VERSION}-incubating.war
 
 # Entpacken
 tar -xzf guacamole-server-${VERSION}-incubating.tar.gz
-tar -xzf guacamole-auth-jdbc-${VERSION}-incubating.tar.gz
+# tar -xzf guacamole-auth-jdbc-${VERSION}-incubating.tar.gz
 
 # Ordner erstellen
 mkdir /etc/guacamole
